@@ -1,5 +1,4 @@
 #from youtube tutorial
-from tkinter import W
 
 #from youtube tutorial
 import threading
@@ -13,11 +12,15 @@ class myThread(threading.Thread):
         self.name = name
         self.counter = counter
 
+    def __del__(self):
+        print("Destructor called, thread deleted.")
+
     # this run method is called by the .start() 
     def run(self):
         print("Starting " + self.name + "\n")
         print_time(self.name, self.counter, 5)
         print("Exiting " + self.name + "\n")
+
 
 # delayig the thread so the other can come in
 # printing where each thread is
@@ -39,7 +42,8 @@ thread1.join()
 thread2.join()
 
 print("Exiting main thread.")
-        
+thread1.__del__()
+thread2.__del__()
 """
 Visual representation of why thread 1 is run twice, between 3 and 4 seconds.
 
