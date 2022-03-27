@@ -42,8 +42,6 @@ thread1.join()
 thread2.join()
 
 print("Exiting main thread.")
-thread1.__del__()
-thread2.__del__()
 """
 Visual representation of why thread 1 is run twice, between 3 and 4 seconds.
 
